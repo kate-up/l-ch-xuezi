@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 顶部元素10px内边距 补丁 */
+        body {
+            padding-top: 10px;
+        }
+        .all_bg {
+            width: 800px;
+            height: 600px;
+            margin: 0 auto;         /*　水平居中　*/
+        }
+        /* 定位：父元素相对定位　子元素绝对定位 */
+        #allcanvas{
+            position: relative;
+            width: 800px;
+            height: 600px;
+            margin: 0;
+        }
+        #canvas1 {
+            position: absolute;
+            width: 800px;
+            height: 600px;
+            bottom: 0;
+            left: 0;
+            z-index: 1;      /*　前面画布　*/
+            border: 1px solid #00f;
+        }
+        #canvas2 {
+            position: absolute;
+            width: 800px;
+            height: 600px;
+            bottom: 0;
+            left: 0;
+            z-index: 0;      /*　后面画布　*/
+            border: 1px solid #f00
+        }
+    </style>
+</head>
+<body>
+    <div class="all_bg">         <!-- 最外层div背景 -->
+        <div id="allcanvas">     <!-- 所有画布 -->
+            <canvas id="canvas1" width=800px height=600px>前面的画布</canvas>
+            <canvas id="canvas2" width=800px height=600px>后面的画布</canvas>
+        </div>
+    </div>
+    <script src="./js/main.js"></script>
+    <script src="./js/background.js"></script>
+    <!-- <script src="./js/ane.js"></script> -->  <!--第一个静态版本-->
+    <script src="./js/ane2.js"></script>
+    <script src="./js/fruit.js"></script>
+    <script src="./js/mom.js"></script>
+</body>
+</html>
