@@ -1,6 +1,11 @@
 // collsion.js
 // 此文件完成所有游戏中碰撞检测功能
 // 1：大鱼碰撞食物
+// 2: 大鱼碰撞小鱼
+// 3：将collsion.js加载index.html
+// 4：并且在main.js gameloop
+
+// 1：大鱼碰撞食物
 function momFruitsCollsion(){
     // 1.1：创建循环遍历所有事物
     for(var i=0; i<fruit.num; i++){
@@ -12,6 +17,14 @@ function momFruitsCollsion(){
             if(len< 900){
                 // 1.5: 食物消失 
                 fruit.alive[i] = false;
+                //1.6: 计算分数
+                //1.7：判断食物类型
+                if(fruit.fruiType[i] !== "blue"){
+                    data.score += 200;
+                }else{
+                    data.score += 100;
+                }
+                //1.8：分数累加
             }
         }
     }

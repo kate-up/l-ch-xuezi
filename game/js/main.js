@@ -5,6 +5,10 @@
 //        绘制游戏角色
 
 //1：声明所以全局变量
+//2：创建函数game   第一个执行函数
+//3：创建函数init    初始化
+
+//1：声明所以全局变量
 var can1 ;      //画布1
 var can2 ;      //画布2
 var ctx1 ;      //画笔1
@@ -19,6 +23,8 @@ var ane;
 var fruit;
 //1.3：创建全局变量保存大鱼
 var mom;
+//1.4: 创建全局变量保存分数
+var data;
 
 //2：创建函数game   第一个执行函数
 function game(){
@@ -54,6 +60,8 @@ function init(){
     mom.init();
     //3.7: 创建鼠标移动监听绑定画布 1 上
     can1.addEventListener("mousemove", canHandler);
+    //3.8: 创建分数对象
+    data = new dataObj();
 }
 
 //4：创建函数gameloop  循环绘制元素
@@ -62,6 +70,8 @@ function gameloop(){
     requestAnimationFrame(gameloop);
     // 4.3: 清除画布 1 操作
     ctx1.clearRect(0, 0, canWidth, canHeight);
+    //4.3.1: 完成检测碰撞
+    momFruitsCollsion();
     //4.4: 调用监听食物数量函数
     fruitMonitor();
     //4.5：调用绘制背景函数
@@ -72,6 +82,8 @@ function gameloop(){
     fruit.draw();
     //4.8: 调用绘制大鱼
     mom.draw();
+    //4.9
+    data.draw();
 }
 
 //5：页面加载调用game
