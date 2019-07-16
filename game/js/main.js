@@ -5,7 +5,6 @@
 //        绘制游戏角色
 
 //1：声明所以全局变量
-
 var can1 ;      //画布1
 var can2 ;      //画布2
 var ctx1 ;      //画笔1
@@ -22,7 +21,6 @@ var fruit;
 var mom;
 
 //2：创建函数game   第一个执行函数
-
 function game(){
     init();
     gameloop();
@@ -30,7 +28,6 @@ function game(){
 
 //入口函数
 //3：创建函数init    初始化
-
 function init(){
     //3.1: 初始化二个画布二支画笔
     can1 = document.getElementById("canvas1");
@@ -55,13 +52,16 @@ function init(){
     //3.6: 创建大鱼对象并且调用初始化方法
     mom = new momObj();
     mom.init();
+    //3.7: 创建鼠标移动监听绑定画布 1 上
+    can1.addEventListener("mousemove", canHandler);
 }
 
 //4：创建函数gameloop  循环绘制元素
-
 function gameloop(){
     //4.1: 创建定时器调用gameloop
     requestAnimationFrame(gameloop);
+    // 4.3: 清除画布 1 操作
+    ctx1.clearRect(0, 0, canWidth, canHeight);
     //4.4: 调用监听食物数量函数
     fruitMonitor();
     //4.5：调用绘制背景函数
@@ -75,7 +75,21 @@ function gameloop(){
 }
 
 //5：页面加载调用game
-
 document.body.onload = game;    //函数的绑定 没有括号   右括号就是立即调用
 
 //6：将文件main.js添加到index.html
+// 6.1: 创建二个全局变量保存鼠标位置
+var mx = 0;
+var my = 0;
+
+//7：鼠标移动画布事件处理函数
+function canHandler( e ){
+    // 7.1: 获取鼠标 x 位置
+    var x = e.offsetX;
+    // 7.2：获取鼠标 y 位置
+    var y = e.offsetY;
+    //console.log(x+":"+y);
+    // 7.3：将鼠标 x 与 y 位置赋值   全局变量 mx  my
+    mx = x;
+    my = y;
+}
