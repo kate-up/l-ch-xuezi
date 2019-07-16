@@ -9,7 +9,14 @@ window.requestAnimFrame = (function() {
 		};
 })();
 
-
+/*
+* 此函数完成两点之间距离公式
+* @param {*} x1 大鱼位置
+* @param {*} y1
+* @param {*} x2 小鱼位置
+* @param {*} y2 
+* @retrun 大鱼 - 小鱼 = 900
+*/
 function calLength2(x1, y1, x2, y2) {
 	return Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2);
 }
